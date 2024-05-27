@@ -161,12 +161,17 @@ function moveBot() {
 
     if (botRect.top < itemRect.bottom && botRect.bottom > itemRect.top && botRect.left < itemRect.right && botRect.right > itemRect.left) {
         botScore++;
-        itemPosition.top = getRandomPosition();
-        itemPosition.left = getRandomPosition();
         updateBotScore();
-        updateItemPosition();
+        // Do not update item position here
     }
 }
+
+function respawnItem() {
+    itemPosition.top = getRandomPosition();
+    itemPosition.left = getRandomPosition();
+    updateItemPosition();
+}
+
 
 
 function updateItemPosition() {
