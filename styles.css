@@ -1,0 +1,210 @@
+/* #page {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 16rem;
+    justify-content: center;
+} */
+
+#page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #282c34;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    animation: none; /* Reset any existing animations */
+}
+
+body.rage {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+body.zoom {
+    animation: zoom 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+#gameContainer, #botGameContainer {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border: 2px solid #61dafb;
+    background-color: #20232a;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 0 20px;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+#player, #botPlayer {
+    position: absolute;
+    width: 60px;
+    height: 40px; /* Shorter body */
+    background-color: #d3a05e; /* Viking's skin tone */
+    border-radius: 50%; /* Head shape */
+    box-shadow: inset 0px -10px 0px 0px #7a5133; /* Hair */
+    animation: rotate 0.2s infinite alternate;
+}
+@keyframes rotate {
+    from {
+        transform: rotate(-2deg);
+    }
+    to {
+        transform: rotate(2deg);
+    }
+}
+
+.helmet {
+    width: 30px;
+    height: 20px;
+    background: gray;
+    border-radius: 50% 50% 0 0;
+    position: relative;
+}
+
+.horn {
+    width: 10px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.left-horn {
+    left: -10px;
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.right-horn {
+    right: -10px;
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+.body {
+    width: 30px;
+    height: 30px;
+    background: brown;
+}
+
+.legs {
+    width: 10px;
+    height: 10px;
+    background: black;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#item, #botItem {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, #21a1f1, #0e78d5);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(33, 161, 241, 0.8), inset 0 0 15px rgba(14, 120, 213, 0.8);
+    animation: itemMove 1s infinite alternate;
+}
+
+#score, #botScore {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #61dafb;
+    font-size: 20px;
+}
+
+#instructions {
+    color: #61dafb;
+    font-size: 18px;
+    text-align: center;
+}
+
+@keyframes itemMove {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.2); }
+}
+
+@keyframes collectFeedback {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+#collectFeedback {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: rgba(97, 218, 251, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.moveFeedback {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: rgba(97, 218, 251, 0.2);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: moveFeedback 0.5s forwards;
+}
+
+@keyframes moveFeedback {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+#rageMode {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.5);
+    pointer-events: none;
+    animation: rageMode 0.5s forwards;
+}
+
+@keyframes rageMode {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
