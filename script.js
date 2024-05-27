@@ -126,7 +126,7 @@ updatePositions();
 
 
 let botPosition = { top: getRandomPosition(), left: getRandomPosition() };
-let botScore = 0;
+let botScore = 100;
 
 function moveBot() {
     const itemCenterX = itemPosition.left + 15; // Calculate the center of the item horizontally
